@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Drolog is the semantic ontology layer for drone simulation, connecting physics-level simulators to mission-level autonomy systems."
+    />
+    <meta name="theme-color" content="#07110f" />
+    <title>Drolog — Mission-level reasoning for drone simulation</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Drolog home">
+        <span class="brand-mark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </span>
+        <span>Drolog</span>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a href="#why">Why Drolog</a>
+        <a href="#how">How it works</a>
+        <a href="#syntax">Syntax</a>
+      </nav>
+
+      <a class="header-contact" href="mailto:contact@drolog.com">Contact us</a>
+    </header>
+
+    <main id="top">
+      <section class="hero section-shell">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> The semantic ontology layer for drone simulation</p>
+          <h1>Your simulator understands coordinates. <em>Drolog understands the mission.</em></h1>
+          <p class="hero-summary">
+            Drolog translates between the low-level world modeled by simulators and the
+            mission-level concepts used by autonomy teams.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="mailto:contact@drolog.com">Become a design partner</a>
+            <a class="text-link" href="#how">See how it works <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+
+        <div class="video-frame" aria-label="Drolog founder video">
+          <video
+            controls
+            playsinline
+            preload="metadata"
+            width="1920"
+            height="1080"
+          >
+            <source src="founder_video.mp4" type="video/mp4" />
+            Your browser does not support the video element.
+          </video>
+        </div>
+      </section>
+
+      <section class="credibility-strip" aria-label="Company summary">
+        <p>Built by Cambridge computer scientists</p>
+        <span aria-hidden="true"></span>
+        <p>Working Isaac Sim prototype</p>
+        <span aria-hidden="true"></span>
+        <p>GPU accelerated</p>
+      </section>
+
+      <section class="section-shell problem-section" id="why">
+        <div class="section-heading">
+          <p class="section-number">01 — The simulation gap</p>
+          <h2>Autonomy reasons in missions.<br />Simulators speak in physics.</h2>
+        </div>
+
+        <div class="problem-grid">
+          <div class="problem-intro">
+            <p>
+              Most general-purpose simulators—including Gazebo, Isaac Sim, and Unreal
+              Engine—describe the physical world: where a drone is, how fast it is moving,
+              and what its sensors detect.
+            </p>
+            <p>
+              Autonomous systems must answer higher-level questions. Without a shared
+              semantic layer, teams repeatedly bridge that gap by hand.
+            </p>
+          </div>
+
+          <div class="question-stack">
+            <article>
+              <span>01</span>
+              <p>Is the objective still reachable?</p>
+            </article>
+            <article>
+              <span>02</span>
+              <p>How confident is the drone in its location?</p>
+            </article>
+            <article>
+              <span>03</span>
+              <p>What action remains safe if GPS is unavailable?</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="friction-list" aria-label="Current simulation workflow limitations">
+          <div><span>One-off integrations</span><p>Custom code for every simulation and stack.</p></div>
+          <div><span>Hard-coded rules</span><p>Threat zones and mission logic buried in implementations.</p></div>
+          <div><span>Repeated abstractions</span><p>The same concepts rebuilt for every simulator.</p></div>
+          <div><span>Costly uncertainty</span><p>Imperfect information modeled only with substantial effort.</p></div>
+        </div>
+      </section>
+
+      <section class="bridge-section" id="how">
+        <div class="section-shell">
+          <div class="section-heading light-heading">
+            <p class="section-number">02 — The semantic bridge</p>
+            <h2>A thin layer between simulation<br />and decision-making.</h2>
+            <p>
+              Drolog—Drones + Prolog—connects existing drone simulators to autonomy
+              systems. Define concepts like Drone, Mission, Objective, and Threat Zone
+              directly, instead of rebuilding them from coordinates, distances, and sensor data.
+            </p>
+          </div>
+
+          <div class="architecture" aria-label="Drolog architecture">
+            <div class="architecture-card simulator-card">
+              <p class="architecture-label">Physics layer</p>
+              <h3>Simulator</h3>
+              <ul>
+                <li>Position &amp; velocity</li>
+                <li>Objects &amp; distances</li>
+                <li>Raw sensor data</li>
+              </ul>
+              <p class="architecture-examples">Gazebo · Isaac Sim · Unreal Engine</p>
+            </div>
+
+            <div class="flow-arrow" aria-hidden="true"><span>per-tick observations</span></div>
+
+            <div class="architecture-card drolog-card">
+              <div class="drolog-orbit" aria-hidden="true"><span></span></div>
+              <p class="architecture-label">Semantic layer</p>
+              <h3>Drolog</h3>
+              <ul>
+                <li>Mission concepts</li>
+                <li>Beliefs &amp; probabilities</li>
+                <li>Reusable logic</li>
+              </ul>
+            </div>
+
+            <div class="flow-arrow reverse" aria-hidden="true"><span>typed observations</span></div>
+
+            <div class="architecture-card autonomy-card">
+              <p class="architecture-label">Decision layer</p>
+              <h3>RL / Autonomy</h3>
+              <ul>
+                <li>Policy observations</li>
+                <li>Allowed actions</li>
+                <li>Mission outcomes</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="probability-feature">
+            <div class="probability-copy">
+              <p class="eyebrow"><span></span> Native probability</p>
+              <h3>Uncertainty, recomputed every tick.</h3>
+              <p>
+                As a simulation runs, Drolog updates the drone’s modeled beliefs and their
+                probabilities. Teams can test decision-making under changing, imperfect
+                information—including position drift in GPS-denied environments.
+              </p>
+            </div>
+            <div class="probability-visual" aria-hidden="true">
+              <div class="radar-ring ring-one"></div>
+              <div class="radar-ring ring-two"></div>
+              <div class="radar-ring ring-three"></div>
+              <div class="position-dot"></div>
+              <div class="drift-dot"></div>
+              <div class="confidence-label"><span>Position confidence</span><strong>95.2%</strong></div>
+              <div class="tick-label">t + 1</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell scenario-section">
+        <div class="section-heading">
+          <p class="section-number">03 — Example scenario</p>
+          <h2>GPS degrades.<br />The mission adapts.</h2>
+        </div>
+
+        <div class="scenario-layout">
+          <div class="scenario-copy">
+            <p>
+              During a simulated mission, GPS becomes unreliable and the drone’s estimated
+              position begins to drift. Drolog updates the system’s confidence in that
+              position so autonomy software can reason about whether the objective remains
+              reachable and which routes remain safe.
+            </p>
+          </div>
+          <ol class="scenario-steps">
+            <li><span>01</span><div><strong>Observe</strong><p>Ingest GPS, visual odometry, and inertial motion from the simulator.</p></div></li>
+            <li><span>02</span><div><strong>Fuse</strong><p>Maintain a position distribution—not merely one coordinate.</p></div></li>
+            <li><span>03</span><div><strong>Reason</strong><p>Recompute whether the drone is GPS-denied and its position trustworthy.</p></div></li>
+            <li><span>04</span><div><strong>Act</strong><p>Expose observations and allowed actions directly to the RL policy.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="code-section" id="syntax">
+        <div class="section-shell code-shell">
+          <div class="code-intro">
+            <p class="section-number">04 — Example syntax</p>
+            <h2>Mission logic that reads like mission logic.</h2>
+            <p>
+              Drolog makes observations, beliefs, probabilities, and decision rules explicit
+              and inspectable.
+            </p>
+          </div>
+
+          <div class="code-window">
+            <div class="window-bar"><span></span><span></span><span></span><p>gps_denied_mission.drolog</p></div>
+            <pre><code><span class="code-key">drone</span> scout_1
+
+<span class="code-key">zone</span> gps_denied_area {
+    shape: polygon([
+        (52.2041, 0.1182),
+        (52.2048, 0.1201),
+        (52.2035, 0.1210)
+    ])
+}
+
+<span class="code-comment"># Simulator adapters provide observations every tick.</span>
+<span class="code-key">observe</span> gps_position(scout_1) <span class="code-key">from</span> isaac_sim.gps
+<span class="code-key">observe</span> visual_odometry(scout_1) <span class="code-key">from</span> isaac_sim.camera
+<span class="code-key">observe</span> inertial_motion(scout_1) <span class="code-key">from</span> isaac_sim.imu
+
+<span class="code-comment"># Maintain a distribution, not merely one coordinate.</span>
+<span class="code-key">belief</span> position(scout_1) ~ fuse(
+    gps_position(scout_1),
+    visual_odometry(scout_1),
+    inertial_motion(scout_1)
+)
+
+<span class="code-key">probability</span> inside(scout_1, gps_denied_area) :=
+    P(position(scout_1) in gps_denied_area)
+
+<span class="code-key">probability</span> position_accurate(scout_1, within: 5m) :=
+    P(distance(position(scout_1), true_position(scout_1)) &lt; 5m)
+
+<span class="code-key">boolean</span> gps_denied(scout_1) :=
+    inside(scout_1, gps_denied_area) &gt; 0.80
+    or gps_signal_quality(scout_1) &lt; 0.20
+
+<span class="code-key">boolean</span> position_trustworthy(scout_1) :=
+    position_accurate(scout_1, within: 5m) &gt;= 0.95</code></pre>
+          </div>
+
+          <div class="rl-block">
+            <div>
+              <p class="section-number">Consumed directly by RL</p>
+              <h3>From belief to policy.</h3>
+            </div>
+            <pre><code><span class="code-key">rl.observation</span> <span class="code-string">"gps_denied"</span> =
+    gps_denied(scout_1)
+
+<span class="code-key">rl.observation</span> <span class="code-string">"position_confidence"</span> =
+    position_accurate(scout_1, within: 5m)
+
+<span class="code-key">rl.action_allowed</span> continue_to_objective =
+    position_trustworthy(scout_1)</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell boundaries-section">
+        <div class="section-heading compact-heading">
+          <p class="section-number">Designed to fit your stack</p>
+          <h2>Add mission semantics.<br />Keep everything else.</h2>
+        </div>
+        <div class="boundary-grid">
+          <div><span aria-hidden="true">×</span><strong>Not a simulator</strong><p>Works with the simulation environment you already use.</p></div>
+          <div><span aria-hidden="true">×</span><strong>Not an autonomy stack</strong><p>Supplies structured reasoning to your existing system.</p></div>
+          <div><span aria-hidden="true">×</span><strong>Not flight software</strong><p>Runs only in simulation mode, never on a live-flying drone.</p></div>
+        </div>
+      </section>
+
+      <section class="partner-section">
+        <div class="section-shell partner-shell">
+          <div class="partner-copy">
+            <p class="eyebrow"><span></span> Design partner programme</p>
+            <h2>One bounded scenario.<br />Six weeks. No cost.</h2>
+            <p>
+              We have built a working, GPU-accelerated prototype against Isaac Sim. We are
+              looking for a drone or defence organisation to join us as a design partner,
+              integrating Drolog into a bounded use case in your existing simulation environment.
+            </p>
+            <a class="button button-primary" href="mailto:contact@drolog.com">Talk to the founders</a>
+          </div>
+
+          <div class="benefits-card">
+            <p>What Drolog can unlock</p>
+            <ul>
+              <li>Less custom code for each simulation</li>
+              <li>Mission logic reusable across simulators</li>
+              <li>Faster GPS-denied and uncertainty scenarios</li>
+              <li>Tests based on mission outcomes, not only physical behaviour</li>
+              <li>Autonomous decisions that are easier to inspect and evaluate</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="founders-section section-shell">
+        <p>
+          “We’re creating the missing semantic layer between simulation and autonomy.”
+        </p>
+        <div>
+          <strong>Atticus &amp; Adarsh</strong>
+          <span>Co-founders, Drolog · Cambridge computer scientists</span>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <div class="section-shell">
+          <p class="section-number">Build the next simulation with us</p>
+          <a href="mailto:contact@drolog.com">contact@drolog.com <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand footer-brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </span>
+        <span>Drolog</span>
+      </a>
+      <p>Semantic reasoning for drone simulation.</p>
+      <p>© 2026 Drolog</p>
+    </footer>
+  </body>
+</html>
