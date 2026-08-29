@@ -96,4 +96,4 @@ looking for any of these benefits
 - testing autonomy against mission outcomes rather than only physical behavior;
 - making autonomous decisions easier to inspect or evaluate.
 
-Contact us at contact@drolog.com.
+Contact us at contact@drolog.xyz.
